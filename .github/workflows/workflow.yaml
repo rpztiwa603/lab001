@@ -47,7 +47,14 @@ jobs:
           else
               echo deploy success
           fi
-          sleep 60
+          
 
+jobs:
+  # This workflow contains a single job called "build"
+  test:
+    # The type of runner that the job will run on
+    runs-on: self-hosted
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
       - name: test application
         run : curl http://localhost:8080
