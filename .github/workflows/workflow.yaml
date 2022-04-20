@@ -48,5 +48,7 @@ jobs:
               echo deploy success
           fi
 
+          sleep_in_sec: 6000
+
       - name: test application
         run : curl http://localhost:8080
