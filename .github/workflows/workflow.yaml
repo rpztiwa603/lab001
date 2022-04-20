@@ -32,7 +32,7 @@ jobs:
 
       - name: destroy existing process
         run: |
-          if [ ! -z $(docker ps |grep myapp) ]; then
+          if [ ! -z "$(docker ps |grep myapp)" ]; then
               docker stop myapp
               docker rm myapp
 
@@ -49,4 +49,4 @@ jobs:
           fi
 
       - name: test application
-        run : curl localhost:8081
+        run : curl localhost:8080
