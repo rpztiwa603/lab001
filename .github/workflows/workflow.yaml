@@ -17,6 +17,12 @@ jobs:
     runs-on: self-hosted
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
+
+      - uses: actions/checkout@v2
+
+      - name: env checker 
+        run: ls -l
+
       - name: docker build 
         run: |
           docker build -t myapp:1.0.2 .
