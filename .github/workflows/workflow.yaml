@@ -49,4 +49,4 @@ jobs:
           fi
 
       - name: test application
-        run : curl localhost:8080
+        run : curl http://localhost:8080
