@@ -51,7 +51,7 @@ jobs:
           sleep 60
 
   test:
-    need: build
+    needs: build
     runs-on: self-hosted
     steps: 
       - name: test application
