@@ -50,6 +50,9 @@ jobs:
           sleep 60
 
   test:
+
+    runs-on: self-hosted
+    
     steps:
 
       - name: test application
