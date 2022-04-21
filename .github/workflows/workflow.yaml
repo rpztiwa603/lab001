@@ -13,8 +13,6 @@ on:
 
 jobs:
   # This workflow contains a single job called "build"
-- job: build
-  displayName: 'build'
   build:
     # The type of runner that the job will run on
     runs-on: self-hosted
@@ -53,8 +51,6 @@ jobs:
           sleep 60
 
 jobs:
-- job: test
-  displayName: 'test'
   test:
 
     runs-on: self-hosted
