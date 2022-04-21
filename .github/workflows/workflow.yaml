@@ -13,47 +13,46 @@ on:
 
 jobs:
   # This workflow contains a single job called "build"
-  build:
     # The type of runner that the job will run on
-    runs-on: self-hosted
+  runs-on: self-hosted
     # Steps represent a sequence of tasks that will be executed as part of the job
-    - job: build 
-      steps:
+  - job: build 
+    steps:
 
-        - uses: actions/checkout@v2
+      - uses: actions/checkout@v2
 
-        - name: env checker 
-          run: ls -l
+      - name: env checker 
+        run: ls -l
 
-        - name: docker build 
-          run: |
-            docker build -t myapp:1.0.2 .
+      - name: docker build 
+        run: |
+          docker build -t myapp:1.0.2 .
 
-        - name: docker images list
-          run: docker images
+      - name: docker images list
+        run: docker images
 
-        - name: destroy existing process
-          run: |
-            if [ ! -z "$(docker ps |grep myapp)" ]; then
-                docker stop myapp
-                docker rm myapp
+      - name: destroy existing process
+        run: |
+          if [ ! -z "$(docker ps |grep myapp)" ]; then
+              docker stop myapp
+              docker rm myapp
 
-                docker run -d --name myapp -p 8080:80 myapp:1.0.2
-            else
-                docker run -d --name myapp -p 8080:80 myapp:1.0.2
-            fi
+              docker run -d --name myapp -p 8080:80 myapp:1.0.2
+          else
+              docker run -d --name myapp -p 8080:80 myapp:1.0.2
+          fi
 
-            if [ $? -ne 0 ];then
-                echo deploy failed
-                exit 255
-            else
-                echo deploy success
-            fi
-            sleep 60
+          if [ $? -ne 0 ];then
+              echo deploy failed
+              exit 255
+          else
+              echo deploy success
+          fi
+          sleep 60
 
-    - job: test
-    
-      steps:
+  - job: test
 
-        - name: test application
-          run : curl http://localhost:8080
+    steps:
+
+      - name: test application
+        run : curl http://localhost:8080
