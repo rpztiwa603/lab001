@@ -52,6 +52,9 @@ jobs:
 jobs:
   # This workflow contains a single job called "build"
   test:
+    runs-on: self-hosted
+
     steps:
+    
       - name: test application
         run : curl http://localhost:8080
